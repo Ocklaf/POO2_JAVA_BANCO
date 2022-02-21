@@ -8,6 +8,18 @@ package usobanco;
  *
  * @author nostromo
  */
-public class CuentaCorriente {
+public class CuentaCorriente extends CuentaBancaria{
+    private double interesGenerado, saldoCC;
     
+    public CuentaCorriente(String IBAN, double saldo){
+        super(IBAN, saldo);
+    }
+    
+    @Override
+    public void calcularIntereses(){
+        interesGenerado = (INTERESANUAL * this.getSaldo())/100; 
+        saldoCC = getSaldo();
+        saldoCC += interesGenerado;
+        this.setSaldo(saldoCC);
+    }
 }
